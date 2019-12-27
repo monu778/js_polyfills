@@ -1,3 +1,19 @@
+const modu = {
+    x: 42,
+    getX: function() {
+      return this.x;
+    }
+  }
+  
+  const unboundGetX = modu.getX;
+  console.log(unboundGetX()); // The function gets invoked at the global scope
+  // expected output: undefined
+  
+  const boundGetX = unboundGetX.bind(modu);
+  console.log(boundGetX());
+
+polyfill for bind for function
+
 // Does not work with `new funcA.bind(thisArg, args)`
 if (!Function.prototype.bind) (function(){
   var slice = Array.prototype.slice;
